@@ -32,14 +32,14 @@ devem comparecer à apresentação dos trabalhos.
 ---
 ---
 
-In English
+English
 
-# Intro to Digital Image Processing (DIP)
+# Introduction to Digital Images Processing (DIP)
 Prof. Leonardo
 
-Mod 1 of the first pratic activity
+Module 1 of the first pratical activity
 
-Due Date(DD-MM-YYYY): 07/08/2019
+Due Date(MM-DD-YYYY): 08/07/2019
 
 Create a program to open, exhibit, manipulate and save images at RGB with 24
 bits/pixel (8 bits/component/pixel).

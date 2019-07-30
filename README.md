@@ -37,7 +37,7 @@ English
 # Introduction to Digital Images Processing (DIP)
 Prof. Leonardo
 
-Module 1 of the first pratical activity
+Module 1 of the first practical activity
 
 Due Date(MM-DD-YYYY): 08/07/2019
 

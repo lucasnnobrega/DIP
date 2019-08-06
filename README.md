@@ -1,7 +1,10 @@
-Introdução ao Processamento Digital de Imagens
+# Introdução ao Processamento Digital de Imagens
 Prof. Leonardo
+
 Módulo 1 do Trabalho Prático
+
 Data de entrega: 07/08/2019
+
 Desenvolva um sistema para abrir, exibir, manipular e salvar imagens RGB com 24
 bits/pixel (8 bits/componente/pixel). O sistema deve ter a seguinte funcionalidade:
 1. Conversão RGB-YIQ-RGB (cuidado com os limites de R, G e B na volta!)
@@ -25,3 +28,18 @@ discussão (problemas e dificuldades encontradas, comentários críticos sobre o
 resultados) e conclusão. Cada componente do grupo deve estar familiarizado
 com o trabalho desenvolvido pelos demais componentes do seu grupo, e todos
 devem comparecer à apresentação dos trabalhos.
+
+---
+---
+
+English
+
+# Introduction to Digital Images Processing (DIP)
+Prof. Leonardo
+
+Module 1 of the first practical activity
+
+Due Date(MM-DD-YYYY): 08/07/2019
+
+Create a program to open, exhibit, manipulate and save images at RGB with 24
+bits/pixel (8 bits/component/pixel).

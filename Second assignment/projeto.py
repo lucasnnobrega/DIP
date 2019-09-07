@@ -30,8 +30,16 @@ for n in range(N):
 
 Cos_table
 '''
+# %%
+'''
+import time
 
+a = 10
 
+for i in range(10):
+    time.sleep(0.9)
+    print("#"*i, " "*(9-i), "|", i, end="\r")
+'''
 # %%
 
 
@@ -39,28 +47,51 @@ def dct1D(vector):
     N = len(vector)
     X = np.zeros(N)
 
+    print("Running my DCT")
+    '''
     to_prompt = "Are you sure? N = " + str(N)
     input(to_prompt)
 
     # Creating a matrix to reuse the values of Cos already calculated
-    Cos_table = [
-        [math.cos((2*n+1)*k * math.pi/(2*N)) for k in range(N)] for n in range(N)
-    ]
+    Cos_table = (
+        (math.cos((2*n+1)*k * math.pi/(2*N)) for k in range(N)) for n in range(N)
+    )
     print("Cos_table Created")
+    '''
 
     for k in range(N):
         Ak = math.sqrt(1.0/N) if k == 0 else math.sqrt(2.0/N)
-        # CK = math.sqrt(1.0/2) if k == 0 else 1.0
         sum = 0
         for n in range(N):
             # f1 = ((2*(math.pi)*k*n)/2*N)
             # f2 = ((k*(math.pi))/2*N)
             # sum += vector[n] * math.cos(f1+f2)
-            sum += vector[n] * Cos_table[k][n]
+
             # sum += vector[n] * math.cos(((2*math.pi*k*n)/2*N)+((k*math.pi)/2*N))
+
+            # sum += vector[n] * Cos_table[k][n]
+
+            sum += vector[n] * math.cos((2*n+1)*k * math.pi/(2*N))
+
         X[k] = Ak * sum
 
+        # print("#"*k, " "*(9-k), "|", k, end="\r")
+
     return X
+
+
+def dct1D_G(vector):
+    N = len(vector)
+
+    print("Running my DCT")
+
+    for k in range(N):
+        Ak = math.sqrt(1.0/N) if k == 0 else math.sqrt(2.0/N)
+        sum = 0
+        for n in range(N):
+            sum += vector[n] * math.cos((2*n+1)*k * math.pi/(2*N))
+
+        yield Ak * sum
 
 
 # %%
@@ -124,8 +155,9 @@ desenhaGrafico(nomeArquivo, audioData)
 
 # %%
 
-#DCT = dct1D(audioData)
-DCT = fftpack.dct(audioData, norm='ortho')  # Calcula a Transformada Discreta
+DCT = dct1D_G(audioData)
+print(type(DCT))
+# DCT = fftpack.dct(audioData, norm='ortho')  # Calcula a Transformada Discreta
 
 
 # print (DCT)

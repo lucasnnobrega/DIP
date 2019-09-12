@@ -66,16 +66,16 @@ def dct1D(vector):
             # f1 = ((2*(math.pi)*k*n)/2*N)
             # f2 = ((k*(math.pi))/2*N)
             # sum += vector[n] * math.cos(f1+f2)
-
             # sum += vector[n] * math.cos(((2*math.pi*k*n)/2*N)+((k*math.pi)/2*N))
-
             # sum += vector[n] * Cos_table[k][n]
 
-            sum += vector[n] * math.cos((2*n+1)*k * math.pi/(2*N))
+            sum += vector[n] * math.cos(((2*n+1)*k*math.pi)/(2*N))
 
         X[k] = Ak * sum
 
         # print("#"*k, " "*(9-k), "|", k, end="\r")
+
+        print("k: ", k, " | N: ", N)
 
     return X
 
@@ -106,13 +106,15 @@ def idct1D(vector):
 
     for n in range(N):
         sum = 0
+
         for k in range(N):
-            f1 = ((2*(3.141592653589)*k*n)/2*N)
-            f2 = ((k*(3.141592653589))/2*N)
+            f1 = ((2*math.pi*k*n)/2*N)
+            f2 = ((k*math.pi)/2*N)
             CK = math.sqrt(1.0/N) if k == 0 else math.sqrt(2.0/N)
-            sum += vector[n] * math.cos(f1+f2)
+            #sum += vector[n] * math.cos(f1+f2)
             sum += CK * vector[k] * math.cos((f1)+(f2))
-            # sum += alpha * vector[k] * math.cos( (math.pi * (2*n+1) * k) / (2*N) )
+            #sum += alpha * vector[k] * math.cos((math.pi * (2*n+1) * k) / (2*N))
+
         x[n] = sum
 
     return x
@@ -143,6 +145,21 @@ def desenhaGrafico(nomeArquivo, data):
     plt.ylabel('Amplitude')
     plt.show()
 
+# %%
+
+
+x_slide = []
+
+X_slide = [10, 5, 8.5, 2, 1, 1.5, 0, 0.1]
+
+#x_slide = fftpack.idct(X_slide, norm='ortho')
+x_slide = idct1D(X_slide)
+
+print(x_slide)
+desenhaGrafico("x_slide", x_slide)
+
+'''
+
 # %% [markdown]
 # # DCTAudio
 
@@ -154,8 +171,9 @@ desenhaGrafico(nomeArquivo, audioData)
 
 
 # %%
-
-DCT = dct1D_G(audioData)
+slide = []
+DCT = dct1D(slide)
+# DCT = dct1D(audioData)
 print(type(DCT))
 # DCT = fftpack.dct(audioData, norm='ortho')  # Calcula a Transformada Discreta
 
@@ -215,5 +233,4 @@ scipy.io.wavfile.write("AudioTransformadoImportantes.wav",
 
 plotaDCTs(DCT, dctFiltrada)
 
-
-# %%
+'''
